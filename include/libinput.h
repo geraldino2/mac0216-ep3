@@ -1,0 +1,1 @@
+void carrega_dados (char *caminho_dos_dados, int *linhas, int *colunas, void *planilha, char *nomes_linhas[]);
