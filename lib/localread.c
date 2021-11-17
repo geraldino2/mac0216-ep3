@@ -1,4 +1,4 @@
-#include "libinput.h"
+//#include "libinput.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,15 +14,12 @@ void carrega_dados (char *caminho_dos_dados, int *linhas, int *colunas, void **p
 	FILE *arqptr = fopen(caminho_dos_dados, "r");
 	while (getline(&linha, &len, arqptr) != -1) {
 		j = 0;
-		coluna = strtok(linha, ",");
-		while(coluna != NULL) {
+		while(coluna = strsep(&linha,",")) {
 			if(j==0) {
 				strcpy(nomes_linhas_template[i], coluna);
 			} else {
-				if(coluna == "") continue;
 				planilha_template[i][j-1] = atof(coluna);
 			}
-			coluna = strtok(NULL, ",");
 			j++;
 		}
 		i++;
