@@ -1,4 +1,4 @@
-#include "libinput.h"*/
+#include "libinput.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <curl/curl.h>
