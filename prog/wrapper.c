@@ -1,6 +1,7 @@
 #include <stdio.h>
-//#include "libinput.h"
-//#include "libplot.h"
+#include <stdlib.h>
+#include "libinput.h"
+#include "libplot.h"
 
 int main() {
 	printf("Informe o caminho para o arquivo csv: ");
