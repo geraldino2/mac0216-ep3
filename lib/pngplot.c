@@ -45,7 +45,7 @@ void desenha_grafico(int linhas, int colunas, float planilha[][colunas]) {
     		fprintf(fp,"%f ",planilha[j][i]);
     	fprintf(fp,"\n");
     }
-    fprintf(gnuplotPipe,"set xtics 5\nset terminal x11\nset output 'graph.png'\n");
+    fprintf(gnuplotPipe,"set xtics 5\nset terminal png\nset output 'graph.png'\n");
     if(line_titles)
     	fprintf(gnuplotPipe, "plot 'graph_data.dat' u 1:2 title '%s' w lp\\\n", *gnomes_linhas+100);
     else
