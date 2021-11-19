@@ -15,7 +15,7 @@
 void carrega_dados (char *caminho_dos_dados, int *linhas, int *colunas, void **planilha, char **nomes_linhas[]){
     //Baixar planilha da WEB:
     CURLcode res;
-    char *filename = "../files/planilha.csv";
+    char *filename = "../planilha.csv";
     CURL *curl = curl_easy_init();
     FILE *file = fopen(filename, "w+b");
     if (curl) {
