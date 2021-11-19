@@ -46,13 +46,13 @@ libpngplot.a : pngplot.o
 
 # Executáveis:
 remotepng : remotepng.o ../include/libinput.h ../include/libplot.h libremoteread.so libpngplot.a
-	gcc -o remotepng remotepng.o -I../include -lremoteread -lpngplot -lcurl
+	gcc -L. -o remotepng remotepng.o -I../include -lremoteread -lpngplot -lcurl
 	
 localpng : localpng.o ../include/libinput.h ../include/libplot.h liblocalread.so libpngplot.a
-	gcc -o localpng localpng.o -I../include -llocalread -lpngplot -lcurl
+	gcc -L. -o localpng localpng.o -I../include -llocalread -lpngplot -lcurl
 
 remotetext : remotetext.o ../include/libinput.h ../include/libplot.h libremoteread.so libtextplot.a
-	gcc -o remotetext remotetext.o -I../include -lremoteread -ltextplot -lcurl
+	gcc -L. -o remotetext remotetext.o -I../include -lremoteread -ltextplot -lcurl
 
 localtext : localtext.o ../include/libinput.h ../include/libplot.h liblocalread.so libtextplot.a
-	gcc -o localtext localtext.o -I../include -llocalread -ltextplot -lcurl 
+	gcc -L. -o localtext localtext.o -I../include -llocalread -ltextplot -lcurl 
