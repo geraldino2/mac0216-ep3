@@ -42,7 +42,6 @@ void desenha_grafico(int linhas, int colunas, float planilha[][colunas]) {
     }
     fclose(fp);
     FILE *gncfgfp = fopen("/tmp/gnp.cfg", "a");
-    fprintf(gncfgfp, "set ylabel");
     fprintf(gncfgfp,"\nset xtics 5\nset terminal dumb 100 50\n");
     if(line_titles)
     	fprintf(gncfgfp, "\nplot '/tmp/graph_data.dat' u 1:2 title '%s' w lp\\\n", *gnomes_linhas+100);
