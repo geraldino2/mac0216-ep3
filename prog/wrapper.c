@@ -3,7 +3,7 @@
 #include "libinput.h"
 #include "libplot.h"
 
-int main() {
+int main(int argc, char *argv[ ]) {
 	printf("Informe o caminho para o arquivo csv: ");
 	char path[100];
 	scanf("%[^\n]", path);
@@ -21,14 +21,10 @@ int main() {
         }
     }
 	
-	char rotuloy[100], rotulox[100], titulo[100];
-	printf("Qual o título do seu gráfico");
-	scanf("%[^\n]", titulo);
-	printf("Qual o rotulo das abcissas?");
-	scanf("%[^\n]", rotulox);
-	printf("E das ordenadas?");
-	scanf("%[^\n]", rotuloy);
-
+	char rotuloy[100] = argv[1];
+	char rotulox[100] = argv[2];
+	char titulo[100] = argv[3];
+	
 	define_titulo(titulo);
 	define_rotulo_x(rotulox);
 	define_rotulo_y(rotuloy);
