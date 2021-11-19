@@ -11,8 +11,8 @@ bool line_titles = false;
 char *gnomes_linhas[100];
 
 void define_titulo(char *titulo) {
-    FILE *fp = fopen("/tmp/gnp.cfg", "a");
-    fprintf(fp, "\n%s \"%s\"\n", "set title", titulo);
+    FILE *fp = fopen("/tmp/gnp.cfg", "w");
+    fprintf(fp, "%s \"%s\"\n", "set title", titulo);
     fclose(fp);
 }
 
