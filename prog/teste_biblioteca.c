@@ -3,8 +3,7 @@
 #include "libinput.h"
 #include "libplot.h"
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	printf("Informe o caminho para o arquivo csv: ");
 	char path[100];
 	scanf("%[^\n]", path);
@@ -16,12 +15,8 @@ int main(int argc, char *argv[])
 
 	float matriz[linhas][colunas];
 	for (int j = 0; j < linhas; j++)
-	{
 		for (int i = 0; i < colunas; i++)
-		{
 			matriz[j][i] = *((float *)planilha + (j * colunas) + i);
-		}
-	}
 
 	char titulo[100];
 	strcpy(titulo, argv[1]);
@@ -29,17 +24,15 @@ int main(int argc, char *argv[])
 	strcpy(rotulox, argv[2]);
 	char rotuloy[100];
 	strcpy(rotuloy, argv[3]);
-	//define_titulo(titulo);
-	//define_rotulo_x(rotulox);
-	//define_rotulo_y(rotuloy);
+	define_titulo(titulo);
+	define_rotulo_x(rotulox);
+	define_rotulo_y(rotuloy);
 
 	char **nome_linhas;
 	nome_linhas = malloc(linhas * sizeof *nome_linhas);
 
 	for (int i = 0; i < linhas; i++)
-	{
 		nome_linhas[i] = *nomelinhas + i * 100;
-	}
 
 	define_nomes_linhas(nome_linhas);
 	desenha_grafico(linhas, colunas, matriz);
