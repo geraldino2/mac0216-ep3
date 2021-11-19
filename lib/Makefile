@@ -4,29 +4,29 @@ clean:
 	rm -f *.o *.a remotepng localpng remotetext localtext
 
 # Arquivos objetos:
-remoteread.o : remoteread.c libinput.h
+remoteread.o : remoteread.c ../include/libinput.h
 	gcc -L. -c -fPIC remoteread.c -I../include
 
-localread.o : localread.c libinput.h
+localread.o : localread.c ../include/libinput.h
 	gcc -L. -c -fPIC localread.c -I../include 
 
-pngplot.o : pngplot.c libplot.h
+pngplot.o : pngplot.c ../include/libplot.h
 	gcc -L. -c pngplot.c -I../include
 
-textplot.o: textplot.c libplot.h
+textplot.o: textplot.c ../include/libplot.h
 	gcc -L. -c textplot.c -I../include
 
-remotepng.o : wrapper.c libinput.h libplot.h
-	gcc -L. -c wrapper.c -o remotepng.o -I../include
+remotepng.o : ../prog/wrapper.c ../include/libinput.h ../include/libplot.h
+	gcc -L. -c ../prog/wrapper.c -o remotepng.o -I../include
 
-localpng.o : wrapper.c libinput.h libplot.h
-	gcc -L. -c wrapper.c -o localpng.o -I../include
+localpng.o : ../prog/wrapper.c ../include/libinput.h ../include/libplot.h
+	gcc -L. -c ../prog/wrapper.c -o localpng.o -I../include
 	
-remotetext.o : wrapper.c libinput.h libplot.h
-	gcc -L. -c wrapper.c -o remotetext.o -I../include
+remotetext.o : ../prog/wrapper.c ../include/libinput.h ../include/libplot.h
+	gcc -L. -c ../prog/wrapper.c -o remotetext.o -I../include
 
-localtext.o : wrapper.c libinput.h libplot.h
-	gcc -L. -c wrapper.c -o localtext.o -I../include
+localtext.o : ../prog/wrapper.c ../include/libinput.h ../include/libplot.h
+	gcc -L. -c ../prog/wrapper.c -o localtext.o -I../include
 
 # Bibliotecas
 
@@ -45,14 +45,14 @@ libpngplot.a : pngplot.o
 	ar rcv libpngplot.a pngplot.o
 
 # Executáveis:
-remotepng : remotepng.o libinput.h libplot.h libremoteread.so libpngplot.a
+remotepng : remotepng.o ../include/libinput.h ../include/libplot.h libremoteread.so libpngplot.a
 	gcc -o remotepng remotepng.o -I../include -lremoteread -lpngplot -lcurl
 	
-localpng : localpng.o libinput.h libplot.h liblocalread.so libpngplot.a
+localpng : localpng.o ../include/libinput.h ../include/libplot.h liblocalread.so libpngplot.a
 	gcc -o localpng localpng.o -I../include -llocalread -lpngplot -lcurl
 
-remotetext : remotetext.o libinput.h libplot.h libremoteread.so libtextplot.a
+remotetext : remotetext.o ../include/libinput.h ../include/libplot.h libremoteread.so libtextplot.a
 	gcc -o remotetext remotetext.o -I../include -lremoteread -ltextplot -lcurl
 
-localtext : localtext.o libinput.h libplot.h liblocalread.so libtextplot.a
+localtext : localtext.o ../include/libinput.h ../include/libplot.h liblocalread.so libtextplot.a
 	gcc -o localtext localtext.o -I../include -llocalread -ltextplot -lcurl 
