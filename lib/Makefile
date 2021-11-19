@@ -16,17 +16,17 @@ plotagraficopng.o : plotagraficopng.c ../include/libplot.h
 plotagraficotexto.o: plotagraficotexto.c ../include/libplot.h
 	gcc -L. -c plotagraficotexto.c -I../include
 
-pngremoto.o : ../prog/wrapper.c ../include/libinput.h ../include/libplot.h
-	gcc -L. -c ../prog/wrapper.c -o pngremoto.o -I../include
+pngremoto.o : ../prog/teste_biblioteca.c ../include/libinput.h ../include/libplot.h
+	gcc -L. -c ../prog/teste_biblioteca.c -o pngremoto.o -I../include
 
-pnglocal.o : ../prog/wrapper.c ../include/libinput.h ../include/libplot.h
-	gcc -L. -c ../prog/wrapper.c -o pnglocal.o -I../include
+pnglocal.o : ../prog/teste_biblioteca.c ../include/libinput.h ../include/libplot.h
+	gcc -L. -c ../prog/teste_biblioteca.c -o pnglocal.o -I../include
 	
-textoremoto.o : ../prog/wrapper.c ../include/libinput.h ../include/libplot.h
-	gcc -L. -c ../prog/wrapper.c -o textoremoto.o -I../include
+textoremoto.o : ../prog/teste_biblioteca.c ../include/libinput.h ../include/libplot.h
+	gcc -L. -c ../prog/teste_biblioteca.c -o textoremoto.o -I../include
 
-textolocal.o : ../prog/wrapper.c ../include/libinput.h ../include/libplot.h
-	gcc -L. -c ../prog/wrapper.c -o textolocal.o -I../include
+textolocal.o : ../prog/teste_biblioteca.c ../include/libinput.h ../include/libplot.h
+	gcc -L. -c ../prog/teste_biblioteca.c -o textolocal.o -I../include
 
 # Bibliotecas
 
