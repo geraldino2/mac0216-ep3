@@ -20,11 +20,18 @@ int main() {
             matriz[j][i]= *((float*)planilha+(j*colunas)+i);
         }
     }
-	char rotuloy[100], rotulox[100];
+	
+	char rotuloy[100], rotulox[100], titulo[100];
+	printf("Qual o título do seu gráfico");
+	scanf("%[^\n]", titulo);
 	printf("Qual o rotulo das abcissas?");
 	scanf("%[^\n]", rotulox);
 	printf("E das ordenadas?");
 	scanf("%[^\n]", rotuloy);
+
+	define_titulo(titulo);
+	define_rotulo_x(rotulox);
+	define_rotulo_y(rotuloy);
 
 	char **nome_linhas;
 	nome_linhas = malloc(linhas * sizeof *nome_linhas);
@@ -33,7 +40,8 @@ int main() {
 		nome_linhas[i] = *nomelinhas+i*100;
 	}
 
-	//Plota gráfico
+	define_nomes_linhas (nome_linhas);
+	desenha_grafico (linhas, colunas,matriz);
 
 
 	return 0;
