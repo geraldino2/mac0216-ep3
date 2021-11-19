@@ -5,6 +5,13 @@
 #include <string.h>
 #define MAX 1000
 
+/*
+ * Esta função baixa um arquivo .csv da web e depois lê esse arquivo devolvendo o tamanho da planilha
+ * correspondente nos parâmetros de saída *linhas e *colunas, um apontador para a posição de memória da
+ * planilha (array) e outro apontador para um vetor de strings contendo os nomes das linhas em nomes_linhas.
+ * 
+ */
+
 void carrega_dados (char *caminho_dos_dados, int *linhas, int *colunas, void **planilha, char **nomes_linhas[]){
     //Baixar planilha da WEB:
     CURLcode res;
@@ -13,6 +20,7 @@ void carrega_dados (char *caminho_dos_dados, int *linhas, int *colunas, void **p
     FILE *file = fopen(filename, "w+b");
     if (curl) {
         curl_easy_setopt(curl, CURLOPT_URL, caminho_dos_dados);
+        curl_easy_setopt (curl, CURLOPT_FOLLOWLOCATION, 1L);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, file);
         res = curl_easy_perform(curl);
         curl_easy_cleanup(curl);
@@ -63,7 +71,7 @@ int main(int argc, char const *argv[])
     void *planilha;
 
     char *nomelinhas[100];
-    carrega_dados("https://www.ime.usp.br/~kon/tmp/BRICS_PIBPerCapita.csv",&linhas ,&colunas, &planilha, &nomelinhas);
+    carrega_dados("http://www.ime.usp.br/~kon/tmp/BRICS_PIBPerCapita.csv",&linhas ,&colunas, &planilha, &nomelinhas);
     
     float matriz[linhas][colunas];
     for (int j=0; j<linhas;j++){
